@@ -8,5 +8,7 @@ namespace ShopWarehouse.API.Data.Models
         {
 
         }
+
+        public DbSet<Product> Products { get; set; }
     }
 }
