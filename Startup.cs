@@ -5,10 +5,12 @@ using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ShopWarehouse.API.Core.Configuration;
+using ShopWarehouse.API.Data.Models;
 
 namespace ShopWarehouse.API
 {
@@ -28,6 +30,8 @@ namespace ShopWarehouse.API
             services.AddCors();
             services.AddElmah();
             services.SwaggerConfiguration();
+            services.AddDbContext<AppDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("WarehouseConnection")));
             services.AddControllers().AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Startup>())
                 .SetCompatibilityVersion(CompatibilityVersion.Version_3_0).AddJsonOptions(opts =>
                 {
