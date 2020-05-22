@@ -8,6 +8,12 @@
     <NoWarn>$(NoWarn);1591</NoWarn>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Migrations\20200522202100_FixProduct.cs" />
+    <Compile Remove="Migrations\20200522202100_FixProduct.Designer.cs" />
+    <Compile Remove="Migrations\20200522202335_FixProduct.cs" />
+    <Compile Remove="Migrations\20200522202335_FixProduct.Designer.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="ElmahCore" Version="1.2.5" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="8.6.2" />
@@ -20,6 +26,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.4.1" />
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="5.4.1" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="5.4.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\Repository\" />
   </ItemGroup>
 
 
