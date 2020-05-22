@@ -23,7 +23,7 @@ namespace ShopWarehouse.API.Core
                     Type = "String",
                     Default = new OpenApiString("Bearer ")
                 },
-                Required = false
+                Required = true
             });
         }
     }
