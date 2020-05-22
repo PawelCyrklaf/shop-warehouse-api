@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30028.174
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopWarehouse.API", "ShopWarehouse.API.csproj", "{4C8DD8AB-81F5-404F-B10B-2F61163C0556}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4C8DD8AB-81F5-404F-B10B-2F61163C0556}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C8DD8AB-81F5-404F-B10B-2F61163C0556}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C8DD8AB-81F5-404F-B10B-2F61163C0556}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C8DD8AB-81F5-404F-B10B-2F61163C0556}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4F43E5E1-1E4D-47EB-B6D2-6F152E1220AF}
+	EndGlobalSection
+EndGlobal
