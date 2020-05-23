@@ -1,5 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using ShopWarehouse.API.Data.Dto.Product;
 using ShopWarehouse.API.Data.Interfaces;
 using ShopWarehouse.API.Data.Models;
 
@@ -10,10 +13,12 @@ namespace ShopWarehouse.API.Controllers
     public class ProductController : ControllerBase
     {
         private readonly IProductService _productService;
+        private readonly IMapper _mapper;
 
-        public ProductController(IProductService productService)
+        public ProductController(IProductService productService, IMapper mapper)
         {
             _productService = productService;
+            _mapper = mapper;
         }
 
         /// <summary>
@@ -29,6 +34,39 @@ namespace ShopWarehouse.API.Controllers
 
             await _productService.AddProduct(product);
             return Ok();
+        }
+
+        /// <summary>
+        /// Get product details
+        /// </summary>
+        /// <param name="productId">The model.</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("{productId}")]
+        public async Task<ActionResult<ProductDto>> GetProduct([FromRoute] int productId)
+        {
+            var product = await _productService.GetProduct(productId);
+            if (product == null)
+                return NotFound();
+
+            var dto = _mapper.Map<ProductDto>(product);
+
+            return Ok(dto);
+        }
+
+
+        /// <summary>
+        /// Get products list
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("list")]
+        public async Task<ActionResult<ProductDto>> GetProducts()
+        {
+            var products = await _productService.GetProducts();
+            var dto = _mapper.Map<List<ProductDto>>(products);
+
+            return Ok(dto);
         }
     }
 }
