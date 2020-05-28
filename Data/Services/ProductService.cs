@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ShopWarehouse.API.Data.Interfaces;
 using ShopWarehouse.API.Data.Models;
@@ -29,6 +30,22 @@ namespace ShopWarehouse.API.Data.Services
         public async Task<List<Product>> GetProducts()
         {
             return await _appDbContext.Products.ToListAsync();
+        }
+
+
+        public async Task<ActionResult> RemoveProduct(int productId)
+        {
+            var product = await _appDbContext.Products.FindAsync(productId);
+
+            if(product == null)
+            {
+                return new NotFoundResult();
+            }
+
+            _appDbContext.Products.Remove(product);
+            await _appDbContext.SaveChangesAsync();
+
+            return new OkResult();
         }
     }
 }

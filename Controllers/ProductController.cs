@@ -68,5 +68,18 @@ namespace ShopWarehouse.API.Controllers
 
             return Ok(dto);
         }
+
+        /// <summary>
+        /// Remove product
+        /// </summary>
+        /// <param name="productId">Product id</param>
+        /// <returns></returns>
+        [HttpDelete]
+        [Route("{productId}")]
+        public async Task<ActionResult<bool>> RemoveProduct([FromRoute]int productId)
+        {
+            return await _productService.RemoveProduct(productId);
+        }
+
     }
 }
