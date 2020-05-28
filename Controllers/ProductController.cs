@@ -41,8 +41,7 @@ namespace ShopWarehouse.API.Controllers
         /// </summary>
         /// <param name="productId">The model.</param>
         /// <returns></returns>
-        [HttpGet]
-        [Route("{productId}")]
+        [HttpGet("{productId}")]
         public async Task<ActionResult<ProductDto>> GetProduct([FromRoute] int productId)
         {
             var product = await _productService.GetProduct(productId);
@@ -59,8 +58,7 @@ namespace ShopWarehouse.API.Controllers
         /// Get products list
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
-        [Route("list")]
+        [HttpGet("list")]
         public async Task<ActionResult<ProductDto>> GetProducts()
         {
             var products = await _productService.GetProducts();
@@ -74,9 +72,8 @@ namespace ShopWarehouse.API.Controllers
         /// </summary>
         /// <param name="productId">Product id</param>
         /// <returns></returns>
-        [HttpDelete]
-        [Route("{productId}")]
-        public async Task<ActionResult<bool>> RemoveProduct([FromRoute]int productId)
+        [HttpDelete("{productId}")]
+        public async Task<ActionResult<bool>> RemoveProduct([FromRoute] int productId)
         {
             return await _productService.RemoveProduct(productId);
         }
