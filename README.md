@@ -1,5 +1,6 @@
 # Shop Warehouse API
 .NET Core 3.1 Rest API for store inventory management. The primary e-commerce store supported by the API will be Prestashop. The application will monitor e.g. product inventory and inform you about low status via sms/email.
+![swagger images](https://www.cyrklaf.eu/swagger2.png)
 
 ## Backend technology
 1. .NET Core 3.1
