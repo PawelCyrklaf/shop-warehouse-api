@@ -47,5 +47,10 @@ namespace ShopWarehouse.API.Data.Services
 
             return new OkResult();
         }
+
+        public async Task UpdateProduct(Product product, int productId)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
