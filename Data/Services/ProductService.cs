@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -48,9 +49,11 @@ namespace ShopWarehouse.API.Data.Services
             return new OkResult();
         }
 
-        public async Task UpdateProduct(Product product, int productId)
+        public async Task UpdateProduct(Product product)
         {
-            throw new System.NotImplementedException();
+                _appDbContext.Update(product);
+                await _appDbContext.SaveChangesAsync();
+
         }
     }
 }
