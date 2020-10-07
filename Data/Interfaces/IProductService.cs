@@ -11,6 +11,6 @@ namespace ShopWarehouse.API.Data.Interfaces
         Task<Product> GetProduct(int productId);
         Task<List<Product>> GetProducts();
         Task<ActionResult> RemoveProduct(int productId);
-        Task UpdateProduct(Product product);
+        Task<bool> UpdateProduct(Product product, int productId);
     }
 }

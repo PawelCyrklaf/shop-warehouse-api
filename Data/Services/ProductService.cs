@@ -49,11 +49,23 @@ namespace ShopWarehouse.API.Data.Services
             return new OkResult();
         }
 
-        public async Task UpdateProduct(Product product)
+        public async Task<bool> UpdateProduct(Product product, int productId)
         {
-                _appDbContext.Update(product);
+            Product productData = await _appDbContext.Products.FirstOrDefaultAsync(item => item.Id == productId);
+
+            if (productData != null)
+            {
+                productData.Name = product.Name;
+                productData.Description = product.Description;
+                productData.Quantity = product.Quantity;
+                productData.Ean13 = product.Ean13;
+
                 await _appDbContext.SaveChangesAsync();
 
+                return true;
+            }
+
+            return false;
         }
     }
 }

@@ -84,10 +84,16 @@ namespace ShopWarehouse.API.Controllers
         /// <param name="product">The model.</param>
         /// <returns></returns>
         [HttpPut("{productId}")]
-        public async Task<ActionResult> UpdateProduct([FromBody] Product product)
+        public async Task<ActionResult> UpdateProduct([FromBody] Product product, [FromRoute] int productId)
         {
-            await _productService.UpdateProduct(product);
-            return Ok();
+           var result = await _productService.UpdateProduct(product, productId);
+
+           if (result)
+           {
+               return Ok();
+           }
+
+           return NotFound();
         }
 
     }
