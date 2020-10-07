@@ -61,8 +61,6 @@ namespace ShopWarehouse.API.Data.Services
                 productData.Ean13 = product.Ean13;
 
                 await _appDbContext.SaveChangesAsync();
-
-                return true;
             }
 
             return false;
