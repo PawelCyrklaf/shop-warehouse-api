@@ -33,6 +33,7 @@ namespace ShopWarehouse.API
             services.AddCors();
             services.AddElmah();
             services.SwaggerConfiguration();
+            services.IdentityConfiguration(Configuration);
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("WarehouseConnection")));
             services.AddControllers().AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Startup>())
@@ -50,10 +51,9 @@ namespace ShopWarehouse.API
                 app.UseDeveloperExceptionPage();
             }
 
+           
             app.UseHttpsRedirection();
             app.UseRouting();
-            app.UseAuthorization();
-
             app.UseSwagger();
             app.UseElmah();
             app.UseSwaggerUI(c =>
@@ -61,7 +61,8 @@ namespace ShopWarehouse.API
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "ShopWarehouse Api");
             });
 
-
+            app.UseAuthentication();
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
