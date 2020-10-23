@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ShopWarehouse.API.Data.Dto.Product;
 using ShopWarehouse.API.Data.Interfaces;
@@ -8,6 +10,7 @@ using ShopWarehouse.API.Data.Models;
 
 namespace ShopWarehouse.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ProductController : ControllerBase
@@ -82,6 +85,7 @@ namespace ShopWarehouse.API.Controllers
         /// Update product
         /// </summary>
         /// <param name="product">The model.</param>
+        /// <param name="productId"></param>
         /// <returns></returns>
         [HttpPut("{productId}")]
         public async Task<ActionResult> UpdateProduct([FromBody] Product product, [FromRoute] int productId)
